@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Rythm</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+    <string name="title_activity_login">login</string>
+    <string name="title_activity_singup">singup</string>
+    <string name="title_activity_signup">signup</string>
+    <string name="hint_no">Phone Number</string>
+    <string name="hint_phone">Phone Number</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_create_circle">Create Circle</string>
+    <string name="CreateCircle">Create Circle</string>
+    <string name="title_activity_posts">posts</string>
+    <string name="title_activity_about">about</string>
+    <string name="aboutm">The rhythm as is says is a life-logging app which connects a person with his circles and acts as both a personal social app.</string>
+</resources>

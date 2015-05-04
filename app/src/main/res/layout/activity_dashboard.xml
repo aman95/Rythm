@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.code_breakers.rythm.Dashboard">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar"
+
+        ></include>
+    <ImageView
+        android:id="@+id/person"
+
+        android:layout_below="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:src="@drawable/ic_person"
+        android:backgroundTint="#20121212"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
+    <TextView
+        android:id="@+id/person_name"
+        android:layout_below="@+id/person"
+        android:text="@string/hello_world" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+
+        />
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/person_name"
+        android:id="@+id/card_myActivities"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        card_view:cardCornerRadius="4dp"
+        android:onClick="goToCreateCircle">
+
+        <TextView
+            android:id="@+id/card_text_myActivities"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="My Activities"
+            android:textSize="23dp"/>
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/card_myActivities"
+        android:id="@+id/card_circleActivitiess"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        card_view:cardCornerRadius="4dp">
+
+        <TextView
+            android:id="@+id/card_text_circleActivities"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="My Circle Activities"
+
+            android:textSize="23dp"
+            />
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/card_circleActivitiess"
+        android:id="@+id/card_votesNpolls"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        card_view:cardCornerRadius="4dp">
+
+        <TextView
+            android:id="@+id/card_text_votesNpolls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="Votes and Polls"
+            android:textSize="23dp"/>
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>
