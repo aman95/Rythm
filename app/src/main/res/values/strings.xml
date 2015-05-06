@@ -26,4 +26,9 @@
     <string name="title_activity_posts">posts</string>
     <string name="title_activity_about">about</string>
     <string name="aboutm">The rhythm as is says is a life-logging app which connects a person with his circles and acts as both a personal social app.</string>
+    <string name="drawer_opem">Open</string>
+    <string name="drawer_close">Close</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

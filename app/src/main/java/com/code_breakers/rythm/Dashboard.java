@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,11 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.code_breakers.rythm.preferences.setSharedPreferences;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -23,35 +27,31 @@ import java.util.List;
 public class Dashboard extends ActionBarActivity {
 
     private Toolbar toolbar;
-    ParseQuery<ParseObject> query;
+    //ParseQuery<ParseObject> query;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_dashboard_main);
         toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         //getActionBar().setDisplayShowHomeEnabled(true);
 
+        //Setting up Navigation Drawer
+        Dashboard_NavDrawer drawer_fragment = (Dashboard_NavDrawer) getSupportFragmentManager().findFragmentById(R.id.fragment_Dashboard_NavDrawer);
+        drawer_fragment.setUp(R.id.fragment_Dashboard_NavDrawer,(DrawerLayout)findViewById(R.id.drawerLayout_Dashboard),toolbar);
+
+        //Setting up user session using parse
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        //Change text acc to user session
         final TextView person_name = (TextView)findViewById(R.id.person_name);
-        SharedPreferences prefs = getSharedPreferences("isLoggedIn", 0);
-        //final int isLogged = prefs.getInt("log", 0);
-        final String userPhone = prefs.getString("userPhone",null);
+        String name = currentUser.getString("FullName");
+        person_name.setText(name);
 
-        query = ParseQuery.getQuery("Login_table");
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Login_table");
-        query.whereEqualTo("phone", userPhone);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> user, ParseException e) {
-                if (e == null) {
-                    //String s = email.toString();
-                    String name = user.get(0).getString("name");
-                    person_name.setText(name);
+        //Testing shared prefernces
+        //setSharedPreferences.saveToPreferences(this,"test","Test message Stored, Yeah!!!");
 
-                } else {
-                    Log.d("Dashboard", "Error: " + e.getMessage());
-                }
-            }
-        });
+
     }
 
     public void goToCreateCircle(View view)
@@ -59,6 +59,8 @@ public class Dashboard extends ActionBarActivity {
         Intent i = new Intent(getApplicationContext(),Create_circle.class);
         startActivity(i);
         return;
+        //String msg =setSharedPreferences.readFromPreferences(this,"test","No preference stored");
+        //Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 
 
@@ -84,11 +86,10 @@ public class Dashboard extends ActionBarActivity {
             return true;
         }
         if (id == R.id.logout) {
-            SharedPreferences prefs = getSharedPreferences("isLoggedIn", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("log", 0);
-            editor.putString("userPhone",null);
-            editor.commit();
+            //Logging out user through parse script
+            ParseUser.logOut();
+            Toast.makeText(getApplicationContext(), "Logged Out", Toast.LENGTH_LONG).show();
+
             Intent i = new Intent(getApplicationContext(),login.class);
             startActivity(i);
             finish();
@@ -96,9 +97,9 @@ public class Dashboard extends ActionBarActivity {
         }
         if (id == R.id.createCircle) {
 
-            Intent i = new Intent(getApplicationContext(),Create_circle.class);
-            startActivity(i);
-            finish();
+            //Intent i = new Intent(getApplicationContext(),Create_circle.class);
+            startActivity(new Intent(getApplicationContext(),Create_circle.class));
+            //finish();
             return true;
         }
 

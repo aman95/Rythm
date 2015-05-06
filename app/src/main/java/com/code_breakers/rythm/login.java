@@ -13,9 +13,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -45,34 +47,19 @@ public class login extends ActionBarActivity {
         final String PhoneNum = phno.getText().toString();
         EditText pass = (EditText)findViewById(R.id.password);
         final String Password = pass.getText().toString();
-        query.whereEqualTo("phone", PhoneNum);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> user, ParseException e) {
-                if (e == null) {
-                    //String s = email.toString();
-                    if(user.size() == 1)
-                    {
-                        if(user.get(0).getString("password").equals(Password))
-                        {
-                            Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                            SharedPreferences prefs = getSharedPreferences("isLoggedIn", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = prefs.edit();
-                            editor.putInt("log", 1);
-                            editor.putString("userPhone",PhoneNum);
-                            editor.commit();
-                            Intent i = new Intent(getApplicationContext(),Dashboard.class);
-                            startActivity(i);
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(),"Wrong Password.",Toast.LENGTH_SHORT).show();
-                        }
 
-                    } else {
-                        Toast.makeText(getApplicationContext(),"User does not Exists.",Toast.LENGTH_SHORT).show();
-                    }
-
+        //Logging in user through parse
+        ParseUser.logInInBackground(PhoneNum, Password, new LogInCallback() {
+            public void done(ParseUser user, ParseException e) {
+                if (user != null) {
+                    // Hooray! The user is logged in.
+                    Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(),Dashboard.class);
+                    startActivity(i);
+                    finish();
                 } else {
-                    Log.d("score", "Error: " + e.getMessage());
+                    // Signup failed. Look at the ParseException to see what happened.
+                    Toast.makeText(getApplicationContext(),"Error occurred: e = "+e.toString(),Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -96,9 +83,9 @@ public class login extends ActionBarActivity {
     public void changeToSignup(View view)
     {
         //Toast.makeText(getApplicationContext(),"llllllllllllllllllllll",Toast.LENGTH_SHORT).show();
-        Intent j = new Intent(this,signup.class);
-        startActivity(j);
-        finish();
+        //Intent j = new Intent(this,signup.class);
+        startActivity(new Intent(this, signup.class));
+        //finish();
     }
    /* */
 }

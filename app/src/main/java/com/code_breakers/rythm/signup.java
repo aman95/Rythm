@@ -14,20 +14,22 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 import java.util.List;
 
 
 public class signup extends ActionBarActivity {
 
-    ParseQuery<ParseObject> query;
+    //ParseQuery<ParseObject> query;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        query = ParseQuery.getQuery("Login_table");
+        //query = ParseQuery.getQuery("Login_table");
     }
 
     public void register(View view)
@@ -40,34 +42,31 @@ public class signup extends ActionBarActivity {
         final String Email = email.getText().toString();
         EditText pass = (EditText) findViewById(R.id.password);
         final String Password = pass.getText().toString();
-        query.whereEqualTo("phone", PhoneNum);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> user, ParseException e) {
+
+        //Parse script to create new user (phone no, unique)
+        ParseUser user = new ParseUser();
+        user.setUsername(PhoneNum);
+        user.setPassword(Password);
+        user.setEmail(Email);
+
+        // other fields can be set just like with ParseObject
+        user.put("FullName", Name);
+
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
                 if (e == null) {
-                    //String s = email.toString();
-                    if(user.size() == 0)
-                    {
-                        final ParseObject login_table = new ParseObject("Login_table");
-                        login_table.put("name", Name);
-                        login_table.put("phone", PhoneNum);
-                        login_table.put("email", Email);
-                        login_table.put("password",Password);
-                        login_table.saveInBackground();
-                        Toast.makeText(getApplicationContext(),"Signup Successful",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(),login.class);
-                        startActivity(i);
-                        finish();
-
-                    } else {
-                        Toast.makeText(getApplicationContext(),"Phone Number already Exits.",Toast.LENGTH_SHORT).show();
-                    }
-
+                    // Hooray! Let them use the app now.
+                    Toast.makeText(getApplicationContext(),"Signup Successful",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(),Dashboard.class);
+                    startActivity(i);
+                    finish();
                 } else {
-                    Log.d("score", "Error: " + e.getMessage());
+                    // Sign up didn't succeed. Look at the ParseException
+                    // to figure out what went wrong
+                    Toast.makeText(getApplicationContext(),"Error occurred: e = "+e.toString(),Toast.LENGTH_LONG).show();
                 }
             }
         });
-
 
     }
 

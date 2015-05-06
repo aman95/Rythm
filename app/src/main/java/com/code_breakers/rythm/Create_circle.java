@@ -35,6 +35,9 @@ public class Create_circle extends ActionBarActivity {
         toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         SharedPreferences prefs = getSharedPreferences("isLoggedIn", 0);
         //final int isLogged = prefs.getInt("log", 0);
         userPhone = prefs.getString("userPhone",null);

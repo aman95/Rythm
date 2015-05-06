@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.code_breakers.rythm.Dashboard_NavDrawer">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="170dp"
+        android:id="@+id/container_nav_drawer_image"
+        android:background="@drawable/ic_nav_drawer"
+        >
+
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_user_icon"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_material_light"
+        android:text="@string/hello_blank_fragment"
+        android:layout_below="@+id/container_nav_drawer_image"/>
+
+</RelativeLayout>

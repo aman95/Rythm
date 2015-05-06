@@ -16,6 +16,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -32,24 +33,27 @@ public class MainActivity extends ActionBarActivity {
 
        Parse.initialize(this, "Lu5JsXQMfDWxzvI9MPKFEJ4FyAAaY8ZDmfOoPXqb", "dZBg7x6QBIJGRXI1eRGldJU7KPRTF5htOazSwCQV");
 
-        final ParseObject login_table = new ParseObject("Login_table");
-        /*login_table.put("phone", "8826170616");
+        /*final ParseObject login_table = new ParseObject("Login_table");
+        login_table.put("phone", "8826170616");
         login_table.put("email", "aman1995k1@gmail.com");
         login_table.put("password", "qwerty");
-        login_table.saveInBackground();*/
+        login_table.saveInBackground();
         final String[] playerName = new String[10];
         final int[] s = new int[1];
 
         SharedPreferences prefs = getSharedPreferences("isLoggedIn", 0);
         final int isLogged = prefs.getInt("log", 0);
-        final String userPhone = prefs.getString("userPhone",null);
+        final String userPhone = prefs.getString("userPhone",null);*/
 
-        if(isLogged == 1)
-        {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if (currentUser != null) {
+            // do stuff with the user
             Intent i = new Intent(getApplicationContext(),Dashboard.class);
             startActivity(i);
             finish();
         } else {
+            // show the signup or login screen
             Intent i = new Intent(getApplicationContext(),login.class);
             startActivity(i);
             finish();
@@ -57,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Login_table");
+        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Login_table");
         query.whereEqualTo("phone", "8826170616");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> email, ParseException e) {
@@ -86,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
 
             }
         };
-        okbut.setOnClickListener(listen);
+        okbut.setOnClickListener(listen);*/
 
     }
 
