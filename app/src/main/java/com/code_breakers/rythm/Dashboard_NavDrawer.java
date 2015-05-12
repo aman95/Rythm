@@ -10,6 +10,8 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,12 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.code_breakers.rythm.adapters.DrawerAdapter;
+import com.code_breakers.rythm.adapters.DrawerItems;
 import com.code_breakers.rythm.preferences.setSharedPreferences;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +35,8 @@ public class Dashboard_NavDrawer extends Fragment {
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
+    public RecyclerView drawerList;
+    public DrawerAdapter drawerAdapter;
 
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
@@ -52,7 +61,12 @@ public class Dashboard_NavDrawer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard__nav_drawer, container, false);
+        View layout = inflater.inflate(R.layout.fragment_dashboard__nav_drawer, container, false);
+        drawerList = (RecyclerView)layout.findViewById(R.id.drawer_list);
+        drawerAdapter = new DrawerAdapter(getActivity(),DrawerItems.getItem());
+        drawerList.setAdapter(drawerAdapter);
+        drawerList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        return layout;
     }
 
 
@@ -109,4 +123,17 @@ public class Dashboard_NavDrawer extends Fragment {
         userIcon.setImageDrawable(roundedBitmapDrawable);
 
     }
+
+    /*public static List<DrawerItems> getItem() {
+        List<DrawerItems> data = new ArrayList<>();
+        int[] iconId = {R.drawable.ic_person,R.drawable.ic_user_icon,R.drawable.ic_logout,R.drawable.ic_createc};
+        String[] itemName = {"Circles","Updates","Events","Settings"};
+        for(int i=0;i<itemName.length && i<iconId.length;i++){
+            DrawerItems current = new DrawerItems();
+            current.drawerItemName = itemName[i];
+            current.drawerListIconId = iconId[i];
+            data.add(current);
+        }
+        return data;
+    }*/
 }

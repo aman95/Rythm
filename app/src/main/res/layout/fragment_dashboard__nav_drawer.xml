@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_material_light"
     tools:context="com.code_breakers.rythm.Dashboard_NavDrawer">
 
     <!-- TODO: Update blank fragment layout -->
@@ -17,16 +18,25 @@
             android:id="@+id/user_icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_user_icon"/>
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container_nav_drawer_image"
+        android:padding="10dp"
+        android:id="@+id/drawer_list">
+
+    </android.support.v7.widget.RecyclerView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_material_light"
         android:text="@string/hello_blank_fragment"
-        android:layout_below="@+id/container_nav_drawer_image"/>
+        android:layout_below="@+id/drawer_list"/>
 
 </RelativeLayout>

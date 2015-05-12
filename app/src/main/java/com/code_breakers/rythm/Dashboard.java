@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.code_breakers.rythm.preferences.setSharedPreferences;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -27,7 +28,7 @@ import java.util.List;
 public class Dashboard extends ActionBarActivity {
 
     private Toolbar toolbar;
-    //ParseQuery<ParseObject> query;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,9 @@ public class Dashboard extends ActionBarActivity {
         toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         //getActionBar().setDisplayShowHomeEnabled(true);
+
+        //Intialising Parse
+        //Parse.enableLocalDatastore(this);
 
         //Setting up Navigation Drawer
         Dashboard_NavDrawer drawer_fragment = (Dashboard_NavDrawer) getSupportFragmentManager().findFragmentById(R.id.fragment_Dashboard_NavDrawer);

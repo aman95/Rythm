@@ -29,9 +29,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // Enable Local Datastore.
-       Parse.enableLocalDatastore(this);
+        //Parse.enableLocalDatastore(this);
 
-       Parse.initialize(this, "Lu5JsXQMfDWxzvI9MPKFEJ4FyAAaY8ZDmfOoPXqb", "dZBg7x6QBIJGRXI1eRGldJU7KPRTF5htOazSwCQV");
+        //Parse.initialize(this, "Lu5JsXQMfDWxzvI9MPKFEJ4FyAAaY8ZDmfOoPXqb", "dZBg7x6QBIJGRXI1eRGldJU7KPRTF5htOazSwCQV");
 
         /*final ParseObject login_table = new ParseObject("Login_table");
         login_table.put("phone", "8826170616");
