@@ -1,28 +1,17 @@
 package com.code_breakers.rythm;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.code_breakers.rythm.preferences.setSharedPreferences;
 
-import com.parse.FindCallback;
-import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import java.util.List;
 
 
 public class Dashboard extends ActionBarActivity {
@@ -37,9 +26,6 @@ public class Dashboard extends ActionBarActivity {
         setSupportActionBar(toolbar);
         //getActionBar().setDisplayShowHomeEnabled(true);
 
-        //Intialising Parse
-        //Parse.enableLocalDatastore(this);
-
         //Setting up Navigation Drawer
         Dashboard_NavDrawer drawer_fragment = (Dashboard_NavDrawer) getSupportFragmentManager().findFragmentById(R.id.fragment_Dashboard_NavDrawer);
         drawer_fragment.setUp(R.id.fragment_Dashboard_NavDrawer,(DrawerLayout)findViewById(R.id.drawerLayout_Dashboard),toolbar);
@@ -52,8 +38,6 @@ public class Dashboard extends ActionBarActivity {
         String name = currentUser.getString("FullName");
         person_name.setText(name);
 
-        //Testing shared prefernces
-        //setSharedPreferences.saveToPreferences(this,"test","Test message Stored, Yeah!!!");
 
 
     }
@@ -63,8 +47,7 @@ public class Dashboard extends ActionBarActivity {
         Intent i = new Intent(getApplicationContext(),Create_circle.class);
         startActivity(i);
         return;
-        //String msg =setSharedPreferences.readFromPreferences(this,"test","No preference stored");
-        //Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+
     }
 
 

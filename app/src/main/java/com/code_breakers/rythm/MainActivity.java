@@ -28,23 +28,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Enable Local Datastore.
-        //Parse.enableLocalDatastore(this);
-
-        //Parse.initialize(this, "Lu5JsXQMfDWxzvI9MPKFEJ4FyAAaY8ZDmfOoPXqb", "dZBg7x6QBIJGRXI1eRGldJU7KPRTF5htOazSwCQV");
-
-        /*final ParseObject login_table = new ParseObject("Login_table");
-        login_table.put("phone", "8826170616");
-        login_table.put("email", "aman1995k1@gmail.com");
-        login_table.put("password", "qwerty");
-        login_table.saveInBackground();
-        final String[] playerName = new String[10];
-        final int[] s = new int[1];
-
-        SharedPreferences prefs = getSharedPreferences("isLoggedIn", 0);
-        final int isLogged = prefs.getInt("log", 0);
-        final String userPhone = prefs.getString("userPhone",null);*/
-
+        //Checking User Session
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         if (currentUser != null) {
@@ -59,38 +43,6 @@ public class MainActivity extends ActionBarActivity {
             finish();
         }
 
-
-
-        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Login_table");
-        query.whereEqualTo("phone", "8826170616");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> email, ParseException e) {
-                if (e == null) {
-                    //String s = email.toString();
-                    playerName[0] = email.get(0).getString("password");
-
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });
-        final TextView viewpg = (TextView) findViewById(R.id.textView);
-        Button okbut = (Button) findViewById(R.id.button);
-        View.OnClickListener listen = new View.OnClickListener(){
-         @Override
-            public void onClick(View view) {
-
-
-
-             viewpg.setText("isLoggedIn = "+isLogged+" Email: "+playerName[0]);
-
-             Intent i = new Intent(getApplicationContext(),login.class);
-             startActivity(i);
-             finish();
-
-            }
-        };
-        okbut.setOnClickListener(listen);*/
 
     }
 

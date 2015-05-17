@@ -2,6 +2,7 @@ package com.code_breakers.rythm.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerViewHolder> {
     public DrawerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.drawer_list_items, parent, false);
         DrawerViewHolder holder = new DrawerViewHolder(view);
+        Log.d("ADAPTER" ,"onCreateViewHolder called --- viewType = "+viewType);
         return holder;
     }
 
@@ -36,6 +38,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerViewHolder> {
         DrawerItems currentItem = data.get(position);
         holder.drawerListName.setText(currentItem.drawerItemName);
         holder.drawerListIcon.setImageResource(currentItem.drawerListIconId);
+        Log.d("ADAPTER", "onBindViewHolder called --- position = " + position);
     }
 
     @Override
