@@ -2,24 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_material_light"
+    android:background="@color/white"
     tools:context="com.code_breakers.rythm.Dashboard_NavDrawer">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:layout_width="280dp"
-        android:layout_height="170dp"
+        android:layout_width="304dp"
+        android:layout_height="172dp"
         android:id="@+id/container_nav_drawer_image"
         android:background="@drawable/ic_nav_drawer"
         >
 
         <ImageView
             android:id="@+id/user_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/ic_user_icon"/>
     </LinearLayout>
 
@@ -27,16 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/container_nav_drawer_image"
-        android:padding="10dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/drawer_list">
 
     </android.support.v7.widget.RecyclerView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_material_light"
-        android:text="@string/hello_blank_fragment"
-        android:layout_below="@+id/drawer_list"/>
 
 </RelativeLayout>

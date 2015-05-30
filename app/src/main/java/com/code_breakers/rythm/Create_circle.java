@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -23,7 +24,7 @@ import com.parse.ParseQuery;
 import java.util.List;
 
 
-public class Create_circle extends ActionBarActivity {
+public class Create_circle extends AppCompatActivity {
 
     private Toolbar toolbar;
     String userPhone;
@@ -70,7 +71,7 @@ public class Create_circle extends ActionBarActivity {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putInt("log", 0);
             editor.putString("userPhone",null);
-            editor.commit();
+            editor.apply();
             Intent i = new Intent(getApplicationContext(),login.class);
             startActivity(i);
             finish();
