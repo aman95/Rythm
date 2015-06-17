@@ -15,5 +15,6 @@
     <color name="btn_logut_bg">#ff6861</color>
     <color name="primaryColor">#009688</color>
     <color name="primaryColorDark">#00796B</color>
+    <color name="colorHighlight">#B6B6B6</color>
 
 </resources>

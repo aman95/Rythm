@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.code_breakers.rythm.Dashboard;
 import com.code_breakers.rythm.R;
 
 import java.util.Collections;
@@ -43,12 +44,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerViewHolder> {
         holder.drawerListIcon.setImageResource(currentItem.drawerListIconId);
         Log.d("ADAPTER", "onBindViewHolder called --- position = " + position);
 
-        holder.drawerListContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,"Position = "+position,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        holder.drawerListContainer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(context,"Position = "+position,Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
     }
 
