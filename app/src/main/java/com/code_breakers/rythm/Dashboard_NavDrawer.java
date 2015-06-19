@@ -79,7 +79,7 @@ public class Dashboard_NavDrawer extends Fragment {
         drawerList.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), drawerList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(view.getContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
                 selectItem(position);
             }
 

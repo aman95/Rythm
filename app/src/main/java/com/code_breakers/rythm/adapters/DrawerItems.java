@@ -14,8 +14,8 @@ public class DrawerItems {
 
     public static List<DrawerItems> getItem() {
         List<DrawerItems> data = new ArrayList<>();
-        int[] iconId = {R.drawable.ic_person,R.drawable.ic_user_icon,R.drawable.ic_logout,R.drawable.ic_createc};
-        String[] itemName = {"Circles","Updates","Events","Settings"};
+        int[] iconId = {R.drawable.ic_circles,R.drawable.ic_track_friends,R.drawable.ic_events,R.drawable.ic_settings};
+        String[] itemName = {"Circles","Track Friends","Events","Settings"};
         for(int i=0;i<itemName.length && i<iconId.length;i++){
             DrawerItems current = new DrawerItems();
             current.drawerItemName = itemName[i];

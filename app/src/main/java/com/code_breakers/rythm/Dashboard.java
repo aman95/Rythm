@@ -46,7 +46,7 @@ public class Dashboard extends AppCompatActivity implements Dashboard_NavDrawer.
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Toast.makeText(getApplicationContext(), "For Navigation Position = " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "For Navigation Position = " + position, Toast.LENGTH_SHORT).show();
         //Update Dashboard container acc to option selected fron navigation drawer
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         switch (position) {

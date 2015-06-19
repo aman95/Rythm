@@ -8,8 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.code_breakers.rythm.R;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,10 +76,31 @@ public class Circles extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View rootView = inflater.inflate(R.layout.fragment_circles, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_circles, container, false);
 
-        TextView tv = (TextView)rootView.findViewById(R.id.textView);
+        final TextView tv = (TextView)rootView.findViewById(R.id.textView);
         tv.setText("Position = "+mPosition+" Username: "+mUsername);
+
+        ParseQuery<ParseUser> queryUser = ParseUser.getQuery();
+        //queryUser.whereNotEqualTo("FullName",mUsername);
+        queryUser.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> list, ParseException e) {
+                if(e==null){
+                    //
+                    List<String> userDetail = new ArrayList<>(list.size());
+                    for(int i = 0; i<list.size();i++) {
+                        userDetail.add(i,list.get(i).getObjectId());
+                    }
+                    tv.setText(userDetail.toString());
+                } else {
+                    //
+                    Toast.makeText(rootView.getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
         return rootView;
     }
 
