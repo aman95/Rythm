@@ -43,16 +43,6 @@ public class Dashboard extends AppCompatActivity implements Dashboard_NavDrawer.
 
     }
 
-//    public void goToCreateCircle(View view) {
-////        Intent i = new Intent(getApplicationContext(),Create_circle.class);
-////        startActivity(i);
-////        return;
-//        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-//        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.containerFragment, Circles.newInstance("Hello", "World"));
-//                fragmentTransaction.commit();
-//
-//    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -117,15 +107,13 @@ public class Dashboard extends AppCompatActivity implements Dashboard_NavDrawer.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent i = new Intent(getApplicationContext(), about.class);
-            startActivity(i);
-            finish();
+            Toast.makeText(getApplicationContext(),"Work in Progress!!",Toast.LENGTH_SHORT).show();
             return true;
         }
         if (id == R.id.logout) {
             //Logging out user through parse script
             ParseUser.logOut();
-            Toast.makeText(getApplicationContext(), "Logged Out", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Logged Out", Toast.LENGTH_SHORT).show();
 
             Intent i = new Intent(getApplicationContext(), login.class);
             startActivity(i);

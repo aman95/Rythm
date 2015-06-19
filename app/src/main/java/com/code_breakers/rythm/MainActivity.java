@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         //Checking User Session
         ParseUser currentUser = ParseUser.getCurrentUser();
 
+//        ShortcutIcon();
+
         if (currentUser != null) {
             // do stuff with the user
             Intent i = new Intent(getApplicationContext(),Dashboard.class);
@@ -69,4 +71,19 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //Creating Shortcut at homescreen
+//    private void ShortcutIcon(){
+//
+//        Intent shortcutIntent = new Intent(getApplicationContext(), MainActivity.class);
+//        shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//        Intent addIntent = new Intent();
+//        addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+//        addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "Test");
+//        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getApplicationContext(), R.mipmap.ic_launcher));
+//        addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+//        getApplicationContext().sendBroadcast(addIntent);
+//    }
 }

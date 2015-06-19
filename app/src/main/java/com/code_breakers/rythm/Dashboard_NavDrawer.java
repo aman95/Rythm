@@ -17,12 +17,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.code_breakers.rythm.adapters.DrawerAdapter;
 import com.code_breakers.rythm.adapters.DrawerItems;
 import com.code_breakers.rythm.listners.RecyclerItemClickListener;
 import com.code_breakers.rythm.preferences.setSharedPreferences;
+import com.parse.ParseUser;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,6 +51,8 @@ public class Dashboard_NavDrawer extends Fragment {
     private boolean mFromSavedInstanceState;
     private static final String KEY_USER_LEARNED_DRAWER = "user_learnd_drawer";
     private View containerView;
+
+    TextView drawerUsername , drawerEmail;
 
 
     public Dashboard_NavDrawer() {
@@ -169,6 +173,12 @@ public class Dashboard_NavDrawer extends Fragment {
 
         //Setting up user icon
         com.pkmmte.view.CircularImageView userIcon = (com.pkmmte.view.CircularImageView) containerView.findViewById(R.id.user_icon);
+
+        drawerUsername = (TextView) containerView.findViewById(R.id.drawer_username);
+        drawerEmail = (TextView)containerView.findViewById(R.id.drawer_email);
+
+        drawerUsername.setText(ParseUser.getCurrentUser().getString("FullName"));
+        drawerEmail.setText(ParseUser.getCurrentUser().getString("email"));
 //        URL url = null;
 //        try {
 //            url = new URL("http://lorempixel.com/64/64/nature/");
